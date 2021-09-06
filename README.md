@@ -19,7 +19,7 @@ You must already have node and yarn installed on your system. Then:
 
 1. Add `jsbundling-rails` to your Gemfile with `gem 'jsbundling-rails'`
 2. Run `./bin/bundle install`
-3. Run `./bin/rails javascript:[esbuild|rollup|webpack]:install`
+3. Run `./bin/rails javascript:install:[esbuild|rollup|webpack]`
 
 Or, in Rails 7+, you can preconfigure your new application to use a specific bundler with `rails new myapp -j [esbuild|rollup|webpack]`.
 
