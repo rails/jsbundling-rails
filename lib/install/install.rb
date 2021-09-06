@@ -9,11 +9,11 @@ end
 
 if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
   say "Add JavaScript include tag in application layout"
-  insert_into_file app_layout_path.to_s, 
-    %(\n    <%= javascript_include_tag "application", "data-track-turbo": "true", defer: true %>), before: /\s*<\/head>/
+  insert_into_file app_layout_path.to_s,
+    %(\n    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>), before: /\s*<\/head>/
 else
   say "Default application.html.erb is missing!", :red
-  say %(        Add <%= javascript_include_tag "application", "data-track-turbo": "true", defer: true %> within the <head> tag in your custom layout.)
+  say %(        Add <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %> within the <head> tag in your custom layout.)
 end
 
 unless (app_js_entrypoint_path = Rails.root.join("app/javascript/application.js")).exist?
