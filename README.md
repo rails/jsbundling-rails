@@ -26,4 +26,4 @@ Or, in Rails 7+, you can preconfigure your new application to use a specific bun
 
 ## License
 
-rollup.js for Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
+JavaScript Bundling for Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
