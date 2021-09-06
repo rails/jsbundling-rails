@@ -174,9 +174,9 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
+  jsbundling-rails!
   rails (~> 6.1.0)
   rexml
-  jsbundling-rails!
   selenium-webdriver
   sqlite3
   stimulus-rails
