@@ -1,7 +1,7 @@
 say "Compile into app/assets/builds"
 empty_directory "app/assets/builds"
 keep_file "app/assets/builds"
-append_to_file "app/assets/config/manifest.js", %(//= link_tree ../builds .js\n)
+append_to_file "app/assets/config/manifest.js", %(//= link_tree ../builds\n)
 
 if Rails.root.join(".gitignore").exist?
   append_to_file ".gitignore", %(/app/assets/builds\n)
