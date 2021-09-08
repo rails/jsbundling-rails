@@ -15,7 +15,7 @@ You can configure your bundler options in the `build` script in `package.json` o
 
 ## Installation
 
-You must already have node and yarn installed on your system. Then:
+You must already have node and yarn installed on your system. You will also need npx version 7.1.0 or later. Then:
 
 1. Add `jsbundling-rails` to your Gemfile with `gem 'jsbundling-rails'`
 2. Run `./bin/bundle install`
