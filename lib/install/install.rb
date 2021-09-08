@@ -4,7 +4,7 @@ keep_file "app/assets/builds"
 append_to_file "app/assets/config/manifest.js", %(//= link_tree ../builds\n)
 
 if Rails.root.join(".gitignore").exist?
-  append_to_file ".gitignore", %(/app/assets/builds\n)
+  append_to_file(".gitignore", %(/app/assets/builds\n!/app/assets/builds/.keep\n))
 end
 
 if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
