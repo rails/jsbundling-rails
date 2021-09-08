@@ -21,3 +21,8 @@ unless (app_js_entrypoint_path = Rails.root.join("app/javascript/application.js"
   empty_directory app_js_entrypoint_path.parent.to_s
   copy_file "#{__dir__}/application.js", app_js_entrypoint_path
 end
+
+unless Rails.root.join("package.json").exist?
+  say "Add default package.json"
+  copy_file "#{__dir__}/package.json", "package.json"
+end

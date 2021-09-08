@@ -1,7 +1,0 @@
-{
-  "name": "app",
-  "private": "true",
-  "scripts": {
-    "build": "webpack --config webpack.config.js"
-  }
-}
