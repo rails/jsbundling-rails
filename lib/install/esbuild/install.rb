@@ -1,5 +1,4 @@
-say "Create default package.json and install esbuild"
-copy_file "#{__dir__}/package.json", "package.json"
+say "Install esbuild"
 run "yarn add esbuild"
 
 say "Add build script"
