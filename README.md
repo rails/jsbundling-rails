@@ -8,6 +8,8 @@ When you deploy your application to production, the `javascript:build` task atta
 
 This also happens in testing where the bundler attaches to the `test:prepare` task to ensure the JavaScript has been bundled before testing commences. (Note that this currently only applies to rails `test:*` tasks (like `test:all` or `test:controllers`), not "rails test", as that doesn't load `test:prepare`).
 
+If your testing library of choice does not define a `test:prepare` Rake task, ensure that your test suite runs `javascript:build` to bundle JavaScript before testing commences.
+
 That's it!
 
 You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `rollup.config.js` for rollup.js or `webpack.config.json` for Webpack (esbuild does not have a default configuration format).
