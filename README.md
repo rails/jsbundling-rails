@@ -14,6 +14,8 @@ That's it!
 
 You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `rollup.config.js` for rollup.js or `webpack.config.json` for Webpack (esbuild does not have a default configuration format).
 
+If you're already using [`webpacker`](https://github.com/rails/webpacker) and you're wondering if you should migrate to `jsbundling-rails`, have a look at [the high-level comparison](./docs/comparison_with_webpacker.md).
+
 
 ## Installation
 
