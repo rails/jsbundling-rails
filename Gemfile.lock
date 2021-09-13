@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    jsbundling-rails (0.1.4)
-      rails (>= 6.0.0)
+    jsbundling-rails (0.1.5)
+      railties (>= 6.0.0)
+      sprockets-rails (>= 2.0.0)
 
 GEM
   remote: https://rubygems.org/
