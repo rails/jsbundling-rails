@@ -7,7 +7,8 @@ if (sprockets_manifest_path = Rails.root.join("app/assets/config/manifest.js")).
 end
 
 if Rails.root.join(".gitignore").exist?
-  append_to_file(".gitignore", %(\n/app/assets/builds/*\n!/app/assets/builds/.keep\n/node_modules\n))
+  append_to_file(".gitignore", %(\n/app/assets/builds/*\n!/app/assets/builds/.keep\n))
+  append_to_file(".gitignore", %(\n/node_modules\n))
 end
 
 if (app_layout_path = Rails.root.join("app/views/layouts/application.html.erb")).exist?
