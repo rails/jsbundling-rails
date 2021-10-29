@@ -1,4 +1,4 @@
-namespace :javascript do
+namespace :js do
   desc "Build your JavaScript bundle"
   task :build do
     unless system "yarn install && yarn build"
@@ -7,10 +7,10 @@ namespace :javascript do
   end
 end
 
-Rake::Task["assets:precompile"].enhance(["javascript:build"])
+Rake::Task["assets:precompile"].enhance(["js:build"])
 
 if Rake::Task.task_defined?("test:prepare")
-  Rake::Task["test:prepare"].enhance(["javascript:build"])
+  Rake::Task["test:prepare"].enhance(["js:build"])
 elsif Rake::Task.task_defined?("db:test:prepare")
-  Rake::Task["db:test:prepare"].enhance(["javascript:build"])
+  Rake::Task["db:test:prepare"].enhance(["js:build"])
 end

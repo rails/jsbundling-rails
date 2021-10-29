@@ -1,4 +1,4 @@
-namespace :javascript do
+namespace :js do
   namespace :install do
     desc "Install shared elements for all bundlers"
     task :shared do
