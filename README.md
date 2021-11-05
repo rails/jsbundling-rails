@@ -14,7 +14,7 @@ If your testing library of choice does not define a `test:prepare` Rake task, en
 
 That's it!
 
-You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `rollup.config.js` for rollup.js or `webpack.config.json` for Webpack (esbuild does not have a default configuration format).
+You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `rollup.config.js` for rollup.js or `webpack.config.json` for Webpack (esbuild does not have a default configuration format, and we don't intend to use esbuild as an API in order to hack around it).
 
 If you're already using [`webpacker`](https://github.com/rails/webpacker) and you're wondering if you should migrate to `jsbundling-rails`, have a look at [the high-level comparison](./docs/comparison_with_webpacker.md).
 
@@ -28,6 +28,13 @@ You must already have node and yarn installed on your system. You will also need
 3. Run `./bin/rails javascript:install:[esbuild|rollup|webpack]`
 
 Or, in Rails 7+, you can preconfigure your new application to use a specific bundler with `rails new myapp -j [esbuild|rollup|webpack]`.
+
+
+## FAQ
+
+### What about source maps?
+
+We're working on a path to bring source-map compatibility to the webpack path, as it's possible to configure that bundler such that the source and the map can be linked together as digested files using Sprockets without double-digesting. This isn't currently possible with esbuild. The recommendation is either to let esbuild produce ES6 outputs (such that you don't even need source maps!) or use webpack if you can't output ES6.
 
 
 ## License
