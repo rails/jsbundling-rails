@@ -32,10 +32,6 @@ Or, in Rails 7+, you can preconfigure your new application to use a specific bun
 
 ## FAQ
 
-### What about source maps?
-
-We're working on a path to bring source-map compatibility to the webpack path, as it's possible to configure that bundler such that the source and the map can be linked together as digested files using Sprockets without double-digesting. This isn't currently possible with esbuild. The recommendation is either to let esbuild produce ES6 outputs (such that you don't even need source maps!) or use webpack if you can't output ES6.
-
 ### Is there a work-around for lack of glob syntax on Windows?
 
 The default build script for esbuild relies on the `app/javascript/*.*` glob pattern to compile multiple entrypoints automatically. This glob pattern is not available by default on Windows, so you need to change the build script in `package.json` to manually list the entrypoints you wish to compile.
