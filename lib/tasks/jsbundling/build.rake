@@ -1,7 +1,7 @@
 namespace :javascript do
   desc "Build your JavaScript bundle"
-  task build: [ "yarn:install" ] do
-    unless system "yarn build"
+  task :build do
+    unless system "yarn install && yarn build"
       raise "jsbundling-rails: Command build failed, ensure yarn is installed and `yarn build` runs without errors"
     end
   end
