@@ -38,7 +38,7 @@ The default build script for esbuild relies on the `app/javascript/*.*` glob pat
 
 ## Why does esbuild overwrite my application.css?
 
-If you [import CSS](https://esbuild.github.io/content-types/#css-from-js) in your application.js while using esbuild, you'll be creating both an `app/assets/builds/application.js` _and_ `app/assets/builds/application.css` file when bundling. The latter can conflict with the `app/assets/builds/application.js` produced by [cssbundling-rails](https://github.com/rails/cssbundling-rails). The solution is to either change the output file for esbuild (and the references for that) or for cssbundling. Both are specified in `package.json`. 
+If you [import CSS](https://esbuild.github.io/content-types/#css-from-js) in your application.js while using esbuild, you'll be creating both an `app/assets/builds/application.js` _and_ `app/assets/builds/application.css` file when bundling. The latter can conflict with the `app/assets/builds/application.css` produced by [cssbundling-rails](https://github.com/rails/cssbundling-rails). The solution is to either change the output file for esbuild (and the references for that) or for cssbundling. Both are specified in `package.json`. 
 
 
 ## License
