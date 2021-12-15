@@ -6,7 +6,7 @@ You develop using this approach by running the bundler in watch mode in a termin
 
 Whenever the bundler detects changes to any of the JavaScript files in your project, it'll bundle `app/javascript/application.js` into `app/assets/builds/application.js` (and all other entry points configured). You can refer to the build output in your layout using the standard asset pipeline approach with `<%= javascript_include_tag "application", defer: true %>`.
 
-When you deploy your application to production, the `javascript:build` task attaches to the `assets:precompile` task to ensure that all your package dependencies from `package.json` have been installed via yarn, and then runs `yarn build` to process all the entry points, as it would in development. The latter files are then picked up by the asset pipeline, digested, and copied into public/assets, as any other asset pipeline file.
+When you deploy your application to production, the `javascript:build` task attaches to the `assets:precompile` task to run `yarn build` to process all the entrypoints, as it would in development. The output files are then picked up by the asset pipeline, digested, and copied into public/assets, as any other asset pipeline file.
 
 This also happens in testing where the bundler attaches to the `test:prepare` task to ensure the JavaScript has been bundled before testing commences. (Note that this currently only applies to rails `test:*` tasks (like `test:all` or `test:controllers`), not "rails test", as that doesn't load `test:prepare`).
 
@@ -31,6 +31,15 @@ Or, in Rails 7+, you can preconfigure your new application to use a specific bun
 
 
 ## FAQ
+
+### Do I need to run `yarn install` during deployment or CI?
+
+`yarn install` is not automatically run for any environment, so yes, you'll need to run it on your own, just like you already run `bundle install`. Alternatively, you may use the deprecated `yarn:install` task (or define your own) and then make `javascript:build` depend on it:
+
+```ruby
+# lib/tasks/yarn.rake
+Rake::Task["javascript:build"].enhance(["yarn:install"])
+```
 
 ### Is there a work-around for lack of glob syntax on Windows?
 
