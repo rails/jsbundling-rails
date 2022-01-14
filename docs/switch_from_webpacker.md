@@ -61,7 +61,7 @@ If you would like to minimize the diff between Webpacker and jsbundling-rails:
 
 ```diff
 # Remove from your Gemfile
-- gem 'jsbundling-rails'
+- gem 'webpacker'
 ```
 
 3. Run `./bin/bundle install`
