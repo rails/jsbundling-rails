@@ -18,6 +18,7 @@ You can configure your bundler options in the `build` script in `package.json` o
 
 If you're already using [`webpacker`](https://github.com/rails/webpacker) and you're wondering if you should migrate to `jsbundling-rails`, have a look at [the high-level comparison](./docs/comparison_with_webpacker.md). If you're looking to migrate from webpacker, see the [migration guide](https://github.com/rails/jsbundling-rails/blob/main/docs/switch_from_webpacker.md).
 
+If you want to use webpack features like [code splitting](https://webpack.js.org/guides/code-splitting/) and [hot module reloading](https://webpack.js.org/concepts/hot-module-replacement/), consider using the official fork of `webpacker`, [`shakapacker`](https://github.com/shakacode/shakapacker).
 
 ## Installation
 
