@@ -1,6 +1,13 @@
 # Switch from Webpacker 5 to jsbundling-rails with webpack
 
-This guide provides step-by-step instructions to migration from [`Webpacker 5`](https://github.com/rails/webpacker/tree/5-x-stable) to `jsbundling-rails` with [`webpack 4`](https://v4.webpack.js.org/concepts/). For upgrading to Webpacker 6 instead, follow [this guide](https://github.com/rails/webpacker/blob/master/docs/v6_upgrade.md) or for comparison between Webpacker and jsbundling-rails, [see this](./comparison_with_webpacker.md).
+This guide provides step-by-step instructions to migration from [`Webpacker 5`](https://github.com/rails/webpacker/tree/5-x-stable) to `jsbundling-rails` with [`webpack 4`](https://v4.webpack.js.org/concepts/). For upgrading to Webpacker/Shakapacker v6 instead, follow [this guide](https://github.com/shakacode/shakapacker/blob/master/docs/v6_upgrade.md) or for comparison between Webpacker and jsbundling-rails, [see this](./docs/comparison_with_webpacker.md).
+
+Note, you will no longer have the following features of `webpacker` if you migrate to `jsbundling-rails`:
+
+1. [HMR](https://webpack.js.org/concepts/hot-module-replacement/)
+2. [Code splitting](https://webpack.js.org/guides/code-splitting/)
+
+If you rely on these features or you have a complicated webpack setup, consider using [`shakpacker`](https://github.com/shakacode/shakapacker).
 
 ## 1. Setup jsbundling-rails
 
@@ -25,7 +32,7 @@ The installation script will:
 - Create `./webpack.config.js`
 - Add the build script to `package.json`
 
-### Optional: Move your webpack configuration
+### Move your webpack configuration
 
 If you would like to minimize the diff between Webpacker and jsbundling-rails:
 
@@ -46,7 +53,7 @@ If you would like to minimize the diff between Webpacker and jsbundling-rails:
 
 ## 2. Remove Webpacker
 
-1. Delete the following files
+1. Delete the following files, ensuring that you've migrated any customizations you've done in them: 
 
 - `./bin/webpack`
 - `./bin/webpack-dev-server`
