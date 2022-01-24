@@ -1,6 +1,6 @@
 # Switch from Webpacker 5 to jsbundling-rails with webpack
 
-This guide provides step-by-step instructions to migration from [`Webpacker 5`](https://github.com/rails/webpacker/tree/5-x-stable) to `jsbundling-rails` with [`webpack 4`](https://v4.webpack.js.org/concepts/). For upgrading to Webpacker/Shakapacker v6 instead, follow [this guide](https://github.com/shakacode/shakapacker/blob/master/docs/v6_upgrade.md) or for comparison between Webpacker and jsbundling-rails, [see this](./docs/comparison_with_webpacker.md).
+This guide provides step-by-step instructions to migration from [`Webpacker 5`](https://github.com/rails/webpacker/tree/5-x-stable) to `jsbundling-rails` with [`webpack 4`](https://v4.webpack.js.org/concepts/). For upgrading to Webpacker/Shakapacker v6 instead, follow [this guide](https://github.com/shakacode/shakapacker/blob/master/docs/v6_upgrade.md) or for comparison between Webpacker and jsbundling-rails, [see this](./comparison_with_webpacker.md).
 
 Note, you will no longer have the following features of `webpacker` if you migrate to `jsbundling-rails`:
 
