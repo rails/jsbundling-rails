@@ -5,4 +5,6 @@ namespace :javascript do
   end
 end
 
-Rake::Task["assets:clobber"].enhance(["javascript:clobber"])
+if Rake::Task.task_defined?("assets:clobber")
+  Rake::Task["assets:clobber"].enhance(["javascript:clobber"])
+end

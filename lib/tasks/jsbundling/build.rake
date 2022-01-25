@@ -7,7 +7,9 @@ namespace :javascript do
   end
 end
 
-Rake::Task["assets:precompile"].enhance(["javascript:build"])
+if Rake::Task.task_defined?("assets:precompile")
+  Rake::Task["assets:precompile"].enhance(["javascript:build"])
+end
 
 if Rake::Task.task_defined?("test:prepare")
   Rake::Task["test:prepare"].enhance(["javascript:build"])
