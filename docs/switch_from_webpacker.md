@@ -93,7 +93,7 @@ yarn remove @rails/webpacker webpack-dev-server
 
 ```sh
 # From the CLI, add babel presets
-yarn add @babel/core @babel/preset-env
+yarn add @babel/core @babel/preset-env babel-loader
 ```
 
 2. Configure Babel
@@ -101,7 +101,7 @@ yarn add @babel/core @babel/preset-env
 ```diff
 // In package.json, add
 + "babel": {
-+   "presets": ["@babel/env"]
++   "presets": ["@babel/preset-env"]
 + }
 ```
 
