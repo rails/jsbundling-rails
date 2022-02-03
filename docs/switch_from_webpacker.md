@@ -7,7 +7,7 @@ Note, you will no longer have the following features of `webpacker` if you migra
 1. [HMR](https://webpack.js.org/concepts/hot-module-replacement/)
 2. [Code splitting](https://webpack.js.org/guides/code-splitting/)
 
-If you rely on these features or you have a complicated webpack setup, consider using [`shakpacker`](https://github.com/shakacode/shakapacker).
+If you rely on these features or you have a complicated webpack setup, consider using [`shakapacker`](https://github.com/shakacode/shakapacker).
 
 ## 1. Setup jsbundling-rails
 
