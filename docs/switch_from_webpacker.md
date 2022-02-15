@@ -93,7 +93,7 @@ yarn remove @rails/webpacker webpack-dev-server
 
 ```sh
 # From the CLI, add babel presets
-yarn add @babel/core @babel/preset-env
+yarn add @babel/core @babel/preset-env babel-loader
 ```
 
 2. Configure Babel
@@ -101,7 +101,7 @@ yarn add @babel/core @babel/preset-env
 ```diff
 // In package.json, add
 + "babel": {
-+   "presets": ["@babel/env"]
++   "presets": ["@babel/preset-env"]
 + }
 ```
 
@@ -130,7 +130,7 @@ You can use Babel to transpile front-end frameworks and TypeScript. This example
 
 ```sh
 # From the CLI, add babel presets
-yarn add @babel/core @babel/preset-env @babel/react @babel/preset-typescript
+yarn add @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript
 ```
 
 2. Configure Babel
@@ -139,8 +139,8 @@ yarn add @babel/core @babel/preset-env @babel/react @babel/preset-typescript
 // In package.json, add
 + "babel": {
 +   "presets": [
-+     "@babel/env",
-+     "@babel/react",
++     "@babel/preset-env",
++     "@babel/preset-react",
 +     "@babel/preset-typescript"
 +   ]
 + }
