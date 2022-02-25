@@ -181,9 +181,8 @@ yarn add css-loader sass sass-loader mini-css-extract-plugin webpack-fix-style-o
 
 // Extracts CSS into .css file
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// Removes exported JavaScript files from CSS-only entries
-// in this example, entry.custom will create a corresponding empty custom.js file
-const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+// The plugin removes empty js scripts generated when using only the styles like css scss sass less stylus in the webpack entry.
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
   entry: {
@@ -209,7 +208,7 @@ module.exports = {
   },
   plugins: [
     // Include plugins
-    new FixStyleOnlyEntriesPlugin(),
+    new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin(),
   ],
 };
