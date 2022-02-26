@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jsbundling-rails (1.0.1)
+    jsbundling-rails (1.0.2)
       railties (>= 6.0.0)
 
 GEM
@@ -186,4 +186,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   2.2.33
+   2.3.8
