@@ -53,7 +53,7 @@ If you would like to minimize the diff between Webpacker and jsbundling-rails:
 
 ## 2. Remove Webpacker
 
-1. Delete the following files, ensuring that you've migrated any customizations you've done in them: 
+1. Delete the following files, ensuring that you've migrated any customizations you've done in them:
 
 - `./bin/webpack`
 - `./bin/webpack-dev-server`
@@ -75,13 +75,10 @@ If you would like to minimize the diff between Webpacker and jsbundling-rails:
 
 ## 3. Install dependencies
 
-Webpacker includes [many dependencies](https://github.com/rails/webpacker/blob/5-x-stable/package.json) by default while jsbundling-rails leaves it to you. If you're only handling JavaScript with no modifications you'll only need to install `webpack-cli`. Treat the rest of this section ala-carte.
+Webpacker includes [many dependencies](https://github.com/rails/webpacker/blob/5-x-stable/package.json) by default while jsbundling-rails leaves it to you. If you're only handling JavaScript with no modifications you don't need to install additional packages. Treat the rest of this section ala-carte.
 
 ```sh
-# From the CLI, add webpack-cli
-yarn add webpack-cli
-
-# Then remove Webpacker packages
+# From the CLI, remove Webpacker packages
 yarn remove @rails/webpacker webpack-dev-server
 ```
 
