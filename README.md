@@ -47,7 +47,7 @@ Suppose you have an image `app/javascript/images/example.png` that you need to r
 1. Create the image at `app/javascript/images/example.png`.
 1. In `package.json`, under `"scripts"` and `"build"`, add the option `--loader:.png=file` to the esbuild script, which instructs esbuild to copy png files to the build directory.
 1. When esbuild runs, it will copy the png file to something like `app/assets/builds/example-5SRKKTLZ.png`.
-1. In frontend code, the image is available for import by its original name: `import Example from "../images/example.png`.
+1. In frontend code, the image is available for import by its original name: `import Example from "../images/example.png"`.
 1. The image itself can now be referenced by its imported name, e.g. in React, `<img src={Example} />`.
 1. The path of the image resolves to `/assets/example-5SRKKTLZ.png`, which is served by the asset pipeline.
 
