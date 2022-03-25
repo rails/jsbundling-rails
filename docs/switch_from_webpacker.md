@@ -274,7 +274,7 @@ module.exports = {
 -  devtool: "source-map",
   …
 +  optimization: {
-+    moduleIds: 'hashed',
++    moduleIds: mode === 'development' ? 'named' : 'deterministic',
 +  }
 }
 ```
