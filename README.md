@@ -24,9 +24,8 @@ If you want to use webpack features like [code splitting](https://webpack.js.org
 
 You must already have node and yarn installed on your system. You will also need npx version 7.1.0 or later. Then:
 
-1. Add `jsbundling-rails` to your Gemfile with `gem 'jsbundling-rails'`
-2. Run `./bin/bundle install`
-3. Run `./bin/rails javascript:install:[esbuild|rollup|webpack]`
+1. Run `./bin/bundle add jsbundling-rails`
+2. Run `./bin/rails javascript:install:[esbuild|rollup|webpack]`
 
 Or, in Rails 7+, you can preconfigure your new application to use a specific bundler with `rails new myapp -j [esbuild|rollup|webpack]`.
 
