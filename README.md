@@ -36,10 +36,20 @@ Or, in Rails 7+, you can preconfigure your new application to use a specific bun
 
 The default build script for esbuild relies on the `app/javascript/*.*` glob pattern to compile multiple entrypoints automatically. This glob pattern is not available by default on Windows, so you need to change the build script in `package.json` to manually list the entrypoints you wish to compile.
 
-## Why does esbuild overwrite my application.css?
+### Why does esbuild overwrite my application.css?
 
 If you [import CSS](https://esbuild.github.io/content-types/#css-from-js) in your application.js while using esbuild, you'll be creating both an `app/assets/builds/application.js` _and_ `app/assets/builds/application.css` file when bundling. The latter can conflict with the `app/assets/builds/application.css` produced by [cssbundling-rails](https://github.com/rails/cssbundling-rails). The solution is to either change the output file for esbuild (and the references for that) or for cssbundling. Both are specified in `package.json`. 
 
+### How can I reference static assets in JavaScript code?
+
+Suppose you have an image `app/javascript/images/example.png` that you need to reference in frontend code built with esbuild.
+
+1. Create the image at `app/javascript/images/example.png`.
+1. In `package.json`, under `"scripts"` and `"build"`, add the option `--loader:.png=file` to the esbuild script, which instructs esbuild to copy png files to the build directory.
+1. When esbuild runs, it will copy the png file to something like `app/assets/builds/example-5SRKKTLZ.png`.
+1. In frontend code, the image is available for import by its original name: `import Example from "../images/example.png"`.
+1. The image itself can now be referenced by its imported name, e.g. in React, `<img src={Example} />`.
+1. The path of the image resolves to `/assets/example-5SRKKTLZ.png`, which is served by the asset pipeline.
 
 ## License
 
