@@ -168,7 +168,7 @@ With the right loaders, webpack can handle CSS files. This setup _only_ uses jsb
 
 ```sh
 # From the CLI, add loaders, plugins, and node sass
-yarn add css-loader sass sass-loader mini-css-extract-plugin webpack-fix-style-only-entries
+yarn add css-loader sass sass-loader mini-css-extract-plugin webpack-remove-empty-scripts
 ```
 
 2. Configure webpack
@@ -180,7 +180,7 @@ yarn add css-loader sass sass-loader mini-css-extract-plugin webpack-fix-style-o
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // Removes exported JavaScript files from CSS-only entries
 // in this example, entry.custom will create a corresponding empty custom.js file
-const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries');
+const RemoveEmptyScriptsPlugin = require('webpack-remove-empty-scripts');
 
 module.exports = {
   entry: {
@@ -206,7 +206,7 @@ module.exports = {
   },
   plugins: [
     // Include plugins
-    new FixStyleOnlyEntriesPlugin(),
+    new RemoveEmptyScriptsPlugin(),
     new MiniCssExtractPlugin(),
   ],
 };
