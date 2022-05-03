@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if ! command -v foreman &> /dev/null
+if ! foreman version &> /dev/null
 then
   echo "Installing foreman..."
   gem install foreman
