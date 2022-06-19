@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jsbundling-rails (1.0.2)
+    jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
 
 GEM
