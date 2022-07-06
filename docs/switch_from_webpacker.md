@@ -195,7 +195,7 @@ module.exports = {
     rules: [
       // Add CSS/SASS/SCSS rule with loaders
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.(?:sa|sc|c)ss$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
     ],
