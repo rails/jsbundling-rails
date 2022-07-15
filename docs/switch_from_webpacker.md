@@ -64,14 +64,28 @@ If you would like to minimize the diff between Webpacker and jsbundling-rails:
 - `./config/webpack/production.js`
 - `./config/webpack/test.js`
 
-2. Remove Webpacker gem
+2. Remove Webpacker configs
+
+```diff
+# Remove from your config/initializers/assets.rb
+-# Add Yarn node_modules folder to the asset load path.
+-Rails.application.config.assets.paths << Rails.root.join('node_modules')
+```
+
+```diff
+# Remove from your config/initializers/content_security_policy.rb
+-#   # If you are using webpack-dev-server then specify webpack-dev-server host
+-#   policy.connect_src :self, :https, "http://localhost:3035", "ws://localhost:3035" if Rails.env.development?
+```
+
+3. Remove Webpacker gem
 
 ```diff
 # Remove from your Gemfile
 - gem 'webpacker'
 ```
 
-3. Run `./bin/bundle install`
+4. Run `./bin/bundle install`
 
 ## 3. Install dependencies
 
