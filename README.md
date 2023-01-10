@@ -8,9 +8,7 @@ Whenever the bundler detects changes to any of the JavaScript files in your proj
 
 When you deploy your application to production, the `javascript:build` task attaches to the `assets:precompile` task to ensure that all your package dependencies from `package.json` have been installed via yarn, and then runs `yarn build` to process all the entry points, as it would in development. The latter files are then picked up by the asset pipeline, digested, and copied into public/assets, as any other asset pipeline file.
 
-This also happens in testing where the bundler attaches to the `test:prepare` task to ensure the JavaScript has been bundled before testing commences. (Note that this currently only applies to rails `test:*` tasks (like `test:all` or `test:controllers`), not "rails test", as that doesn't load `test:prepare`).
-
-If your testing library of choice does not define a `test:prepare` Rake task, ensure that your test suite runs `javascript:build` to bundle JavaScript before testing commences.
+This also happens in testing where the bundler attaches to the `test:prepare` task to ensure the JavaScript has been bundled before testing commences. If your testing library of choice does not call the `test:prepare` Rake task, ensure that your test suite runs `javascript:build` to bundle JavaScript before testing commences.
 
 That's it!
 
