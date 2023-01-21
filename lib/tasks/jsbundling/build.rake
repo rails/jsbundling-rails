@@ -15,14 +15,16 @@ namespace :javascript do
   build_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"]
 end
 
-if Rake::Task.task_defined?("assets:precompile")
-  Rake::Task["assets:precompile"].enhance(["javascript:build"])
-end
+unless ENV["SKIP_JS_BUILD"]
+  if Rake::Task.task_defined?("assets:precompile")
+    Rake::Task["assets:precompile"].enhance(["javascript:build"])
+  end
 
-if Rake::Task.task_defined?("test:prepare")
-  Rake::Task["test:prepare"].enhance(["javascript:build"])
-elsif Rake::Task.task_defined?("spec:prepare")
-  Rake::Task["spec:prepare"].enhance(["javascript:build"])
-elsif Rake::Task.task_defined?("db:test:prepare")
-  Rake::Task["db:test:prepare"].enhance(["javascript:build"])
+  if Rake::Task.task_defined?("test:prepare")
+    Rake::Task["test:prepare"].enhance(["javascript:build"])
+  elsif Rake::Task.task_defined?("spec:prepare")
+    Rake::Task["spec:prepare"].enhance(["javascript:build"])
+  elsif Rake::Task.task_defined?("db:test:prepare")
+    Rake::Task["db:test:prepare"].enhance(["javascript:build"])
+  end
 end
