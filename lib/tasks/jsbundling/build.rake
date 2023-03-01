@@ -1,10 +1,18 @@
 namespace :javascript do
-  desc "Build your JavaScript bundle"
-  task :build do
-    unless system "yarn install && yarn build"
-      raise "jsbundling-rails: Command build failed, ensure yarn is installed and `yarn build` runs without errors"
+  desc "Install JavaScript dependencies"
+  task :install do
+    unless system "yarn install"
+      raise "jsbundling-rails: Command install failed, ensure yarn is installed"
     end
   end
+
+  desc "Build your JavaScript bundle"
+  build_task = task :build do
+    unless system "yarn build"
+      raise "jsbundling-rails: Command build failed, ensure `yarn build` runs without errors"
+    end
+  end
+  build_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"]
 end
 
 if Rake::Task.task_defined?("assets:precompile")
