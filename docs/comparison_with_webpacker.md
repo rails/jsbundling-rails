@@ -21,3 +21,5 @@ Here are some considerations between the two:
   `webpacker`'s complete control over the resulting webpack output files allow it to integrate additional features like automatic [code splitting](https://webpack.js.org/guides/code-splitting/).  Webpack provides advanced optimization to split your statically `import`ed shared dependencies. The `webpacker`/`shakapacker` view helpers will automatically specify each entry point's dependent chunks for you in the resulting HTML.
   With `jsbundling-rails`, you'll be able to manually split out lazy-loaded chunks by using dynamic `import()`s. However, the manual approach would be challenging to maintain on a large project.
   Why is this important? Code splitting allows the browser to download only the JavasScript and CSS needed for a page, improving performance and SEO.
+
+For a in-depth discussion of choosing between `shakapacker` and `jsbundling-rails`, see the discussion [Webpacker alternatives - which path should we go to? #8783](https://github.com/decidim/decidim/discussions/8783) and the resulting PR [Switch away from Webpacker to Shakapacker #10389](https://github.com/decidim/decidim/pull/10389).
