@@ -2,7 +2,7 @@ say "Install esbuild"
 run "yarn add esbuild"
 
 say "Add build script"
-build_script = "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=assets"
+build_script = "esbuild app/javascript/*.* --bundle --sourcemap --outdir=app/assets/builds --public-path=/assets"
 
 case `npx -v`.to_f
 when 7.1...8.0
