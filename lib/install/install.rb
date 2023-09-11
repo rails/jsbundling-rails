@@ -31,16 +31,6 @@ unless Rails.root.join("package.json").exist?
   copy_file "#{__dir__}/package.json", "package.json"
 end
 
-if Rails.root.join("Procfile.dev").exist?
-  append_to_file "Procfile.dev", "js: yarn build --watch\n"
-else
-  say "Add default Procfile.dev"
-  copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
-
-  say "Ensure foreman is installed"
-  run "gem install foreman"
-end
-
 say "Add bin/dev to start foreman"
 copy_file "#{__dir__}/dev", "bin/dev"
 chmod "bin/dev", 0755, verbose: false
