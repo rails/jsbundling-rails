@@ -1,7 +1,7 @@
 require 'json'
 
 if Rails.root.join("Procfile.dev").exist?
-  append_to_file "Procfile.dev", "js: bun build --watch\n"
+  append_to_file "Procfile.dev", "js: bun run build --watch\n"
 else
   say "Add default Procfile.dev"
   copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"
