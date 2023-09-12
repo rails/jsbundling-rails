@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    jsbundling-rails (1.1.2)
+    jsbundling-rails (1.2.0)
       railties (>= 6.0.0)
 
 GEM
@@ -165,6 +165,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  aarch64-linux
   arm64-darwin-20
   arm64-darwin-21
   arm64-darwin-22
