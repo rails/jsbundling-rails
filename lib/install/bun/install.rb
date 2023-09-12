@@ -18,3 +18,11 @@ package_json = JSON.parse(File.read("package.json"))
 package_json["scripts"] ||= {}
 package_json["scripts"]["build"] = "bun bun.config.js"
 File.write("package.json", JSON.pretty_generate(package_json))
+
+say "Add ability to diff lockb to .gitattributes"
+if Rails.root.join(".gitattributes").exist?
+  append_to_file ".gitattributes", "\n# See https://bun.sh/docs/install/lockfile\n*.lockb diff=lockb\n"
+else
+  copy_file "#{__dir__}/.gitattributes", ".gitattributes"
+end
+say %(Run `git config diff.lockb.textconv bun && git config diff.lockb.binary true` to enable pretty diffs for Bun's .lockb file), :green
