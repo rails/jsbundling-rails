@@ -252,6 +252,24 @@ module.exports = {
 };
 ```
 
+### Optional: Use webpack to chunk assets so that it works with Sprockets
+
+Sprockets was updated to detect that an asset has already been fingerprinted and won't fingerprint it again. This allows webpack to do code splitting while ensuring all assets have cache busting fingerprints and can be stored on a CDN. This config allows Sprockets to fingerprint the entrypoint file so that `javascript_include_tag` can load that asset by name.
+
+```
+// in webpack.config.js, add
+module.exports = {
+  output: {
+    filename: "[name].js",
+    chunkFilename: "[name]-[contenthash].digested.js",
+    sourceMapFilename: "[file]-[fullhash].map",
+    path: path.resolve(__dirname, '..', '..', 'app/assets/builds'),
+    hashFunction: "sha256",
+    hashDigestLength: 64,
+  }
+}
+```
+
 ## 4. Test your build
 
 Confirm you have a working webpack configuration. You can rebuild the bundle with:
