@@ -6,7 +6,7 @@ You develop using this approach by running the bundler in watch mode in a termin
 
 Whenever the bundler detects changes to any of the JavaScript files in your project, it'll bundle `app/javascript/application.js` into `app/assets/builds/application.js` (and all other entry points configured). You can refer to the build output in your layout using the standard asset pipeline approach with `<%= javascript_include_tag "application", defer: true %>`.
 
-When you deploy your application to production, the `javascript:build` task attaches to the `assets:precompile` task to ensure that all your package dependencies from `package.json` have been installed via your javascript package manager (bun or yarn), and then runs the build script defined in `package.json` to process all the entry points, as it would in development. The latter files are then picked up by the asset pipeline, digested, and copied into public/assets, as any other asset pipeline file.
+When you deploy your application to production, the `javascript:build` task attaches to the `assets:precompile` task to ensure that all your package dependencies from `package.json` have been installed via your javascript package manager ([bun](https://bun.sh), [npm](https://www.npmjs.com), [pnpm](https://pnpm.io), or [yarn](https://yarnpkg.com)), and then runs the build script defined in `package.json` to process all the entry points, as it would in development. The latter files are then picked up by the asset pipeline, digested, and copied into public/assets, as any other asset pipeline file.
 
 This also happens in testing where the bundler attaches to the `test:prepare` task to ensure the JavaScript has been bundled before testing commences. If your testing library of choice does not call the `test:prepare` Rake task, ensure that your test suite runs `javascript:build` to bundle JavaScript before testing commences.
 
@@ -19,8 +19,7 @@ If you're already using [`webpacker`](https://github.com/rails/webpacker) and yo
 If you want to use webpack features like [code splitting](https://webpack.js.org/guides/code-splitting/) and [hot module reloading](https://webpack.js.org/concepts/hot-module-replacement/), consider using the official fork of `webpacker`, [`shakapacker`](https://github.com/shakacode/shakapacker).
 
 ## Installation
-If you are installing esbuild, rollup, or webpack, you must already have node
-and yarn installed on your system. You will also need npx version 7.1.0 or later.
+If you are installing esbuild, rollup, or webpack, you must already have node installed on your system. You will also need npx version 7.1.0 or later.
 
 If you are using Bun, then you must have the Bun runtime already installed on
 your system.
