@@ -23,21 +23,36 @@ module Jsbundling
     extend self
 
     def install_command
-      return "bun install" if File.exist?('bun.lockb') || (tool_exists?('bun') && !File.exist?('yarn.lock'))
-      return "yarn install" if File.exist?('yarn.lock') || (tool_exists?('yarn') && !File.exist?('package-lock.json'))
-      return "npm install" if File.exist?('package-lock.json') || tool_exists?('npm')
-      raise "jsbundling-rails: No suitable tool found for installing JavaScript dependencies"
+      case tool
+      when :bun then "bun install"
+      when :yarn then "yarn install"
+      when :npm then "npm install"
+      else raise "jsbundling-rails: No suitable tool found for installing JavaScript dependencies"
+      end
     end
 
     def build_command
-      return "bun run build" if File.exist?('bun.lockb') || (tool_exists?('bun') && !File.exist?('yarn.lock'))
-      return "yarn build" if File.exist?('yarn.lock') || (tool_exists?('yarn') && !File.exist?('package-lock.json'))
-      return "npm run build" if File.exist?('package-lock.json') || tool_exists?('npm')
-      raise "jsbundling-rails: No suitable tool found for building JavaScript"
+      case tool
+      when :bun then "bun run build"
+      when :yarn then "yarn build"
+      when :npm then "npm run build"
+      else raise "jsbundling-rails: No suitable tool found for building JavaScript"
+      end
     end
 
     def tool_exists?(tool)
       system "command -v #{tool} > /dev/null"
+    end
+
+    def tool
+      case
+      when File.exist?('bun.lockb') then :bun
+      when File.exist?('yarn.lock') then :yarn
+      when File.exist?('package-lock.json') then :npm
+      when tool_exists?('bun') then :bun
+      when tool_exists?('yarn') then :yarn
+      when tool_exists?('npm') then :npm
+      end
     end
   end
 end
