@@ -1,3 +1,6 @@
+apply "#{__dir__}/../install.rb"
+apply "#{__dir__}/../install_procfile.rb"
+
 say "Install esbuild"
 run "yarn add esbuild"
 
