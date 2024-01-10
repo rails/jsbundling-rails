@@ -1,2 +1,6 @@
 .byebug_history
 *.gem
+/test/dummy/app/assets/builds/*
+/test/dummy/node_modules
+/test/dummy/log/*
+/test/dummy/tmp/*
