@@ -4,8 +4,12 @@ jobs:
   tests:
     steps:
       - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.3"
           bundler-cache: true
+      - run: cd test/dummy && rake test:prepare
       - run: bin/test

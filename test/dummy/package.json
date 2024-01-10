@@ -1,0 +1,7 @@
+{
+  "name": "dummy",
+  "private": true,
+  "scripts": {
+    "build": "bun build ./app/javascripts/application.ts --outdir ./app/assets/builds --minify"
+  }
+}
