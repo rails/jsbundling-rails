@@ -1,4 +1,4 @@
 {
   "name": "app",
-  "private": "true"
+  "private": true
 }
