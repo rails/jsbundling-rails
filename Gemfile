@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# Specify your gem's dependencies in importmap-rails.gemspec.
+# Specify your gem's dependencies in jsbundling-rails.gemspec.
 gemspec
 
 rails_version = ENV["RAILS_VERSION"] || "6.1.0"
 gem "rails", "~> #{rails_version}"
+gem "appraisal"
+gem "debug", ">= 1.0.0"
 
 gem "sqlite3"
 
