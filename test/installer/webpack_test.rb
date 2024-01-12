@@ -1,3 +1,4 @@
+require "json"
 require "test_helper"
 
 class WebpackInstallerTest < ActiveSupport::TestCase
