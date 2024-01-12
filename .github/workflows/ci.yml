@@ -5,11 +5,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ruby-version:
-          - "3.0"
-          - "3.1"
-          - "3.2"
-          - "3.3"
+        ruby: [ "3.0", "3.1", "3.2", "3.3" ]
         gemfile:
           - Gemfile
           - gemfiles/rails_7_0_propshaft.gemfile
@@ -19,18 +15,20 @@ jobs:
           - gemfiles/rails_7_1_sprockets.gemfile
           - gemfiles/rails_main_sprockets.gemfile
         exclude:
-          - ruby-version: "3.0"
+          - ruby: "3.0"
             gemfile: gemfiles/rails_main_propshaft.gemfile
-          - ruby-version: "3.0"
+          - ruby: "3.0"
             gemfile: gemfiles/rails_main_sprockets.gemfile
+
         continue-on-error: [ false ]
 
-    name: ${{ format('Tests (Ruby {0}, {1})', matrix.ruby-version, matrix.gemfile) }}
+    name: ${{ format('Tests (Ruby {0}, {1})', matrix.ruby, matrix.gemfile) }}
     runs-on: ubuntu-latest
     continue-on-error: ${{ matrix.continue-on-error }}
 
     env:
       BUNDLE_GEMFILE: ${{ matrix.gemfile }}
+      BUNDLE_PATH: "vendor/bundle-${{ matrix.gemfile }}"
 
     steps:
       - uses: actions/checkout@v4
@@ -42,8 +40,12 @@ jobs:
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: ${{ matrix.ruby-version }}
+          ruby-version: ${{ matrix.ruby }}
           bundler-cache: false
+
+      - name: Install dependencies
+        run: |
+          bundle install --jobs 4 --retry 3
 
       - uses: oven-sh/setup-bun@v1
 
