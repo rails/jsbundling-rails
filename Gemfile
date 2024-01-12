@@ -9,8 +9,6 @@ gem "rails", "~> #{rails_version}"
 gem "appraisal"
 gem "debug", ">= 1.0.0"
 
-gem "sqlite3"
-
 group :test do
   gem "turbo-rails"
   gem "stimulus-rails"

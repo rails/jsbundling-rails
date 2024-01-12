@@ -45,13 +45,7 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
-      # This prevents a "Failed to build gem native extension" error when
-      # running `bundle install` inside a Rails app that is generated for
-      # testing. The error occurs only in CI, and only when using Ruby 3.0 and
-      # Rails >= 7.1.
-      - name: Install sass-embedded gem
-        if: ${{ matrix.ruby-version == '3.0' }}
-        run: gem install sass-embedded
+      - uses: oven-sh/setup-bun@v1
 
       - name: Run tests
         run: |

@@ -5,7 +5,6 @@ source "https://rubygems.org"
 gem "rails", branch: "main", git: "https://github.com/rails/rails.git"
 gem "appraisal"
 gem "debug", ">= 1.0.0"
-gem "sqlite3"
 gem "propshaft"
 
 group :test do
