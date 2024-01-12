@@ -63,7 +63,15 @@ module RailsAppHelpers
 
     def run_command(*command)
       Bundler.with_unbundled_env do
-        capture_subprocess_io { system(*command, exception: true) }
+        out, err = capture_subprocess_io { system(*command, exception: true) }
+        puts "Output:"
+        puts out
+        puts nil;
+        if err
+          puts "Error:"
+          puts err
+        end
+        [out, err]
       end
     end
 end
