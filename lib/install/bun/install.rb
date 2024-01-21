@@ -1,5 +1,7 @@
 require 'json'
 
+apply "#{__dir__}/../install.rb"
+
 if Rails.root.join("Procfile.dev").exist?
   append_to_file "Procfile.dev", "js: bun run build --watch\n"
 else
