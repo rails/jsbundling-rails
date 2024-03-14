@@ -1,11 +1,16 @@
 #!/usr/bin/env sh
 
-if gem list --no-installed --exact --silent foreman; then
-  echo "Installing foreman..."
-  gem install foreman
+# Default to port 3001 if not specified
+export PORT="${PORT:-3001}"
+
+if command -v overmind >/dev/null 2>&1; then
+  task_runner="overmind"
+else
+  if ! gem list --no-installed --exact --silent foreman; then
+    echo "Installing foreman..."
+    gem install foreman
+  fi
+  task_runner="foreman"
 fi
 
-# Default to port 3000 if not specified
-export PORT="${PORT:-3000}"
-
-exec foreman start -f Procfile.dev "$@"
+exec $task_runner start -f Procfile.dev "$@"
