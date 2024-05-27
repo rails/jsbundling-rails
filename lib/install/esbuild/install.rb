@@ -2,7 +2,7 @@ apply "#{__dir__}/../install.rb"
 apply "#{__dir__}/../install_procfile.rb"
 
 say "Install esbuild"
-run "yarn add esbuild"
+run "yarn add --dev esbuild"
 
 say "Add build script"
 build_script = "esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"

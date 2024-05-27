@@ -3,7 +3,7 @@ apply "#{__dir__}/../install_procfile.rb"
 
 say "Install Webpack with config"
 copy_file "#{__dir__}/webpack.config.js", "webpack.config.js"
-run "yarn add webpack webpack-cli"
+run "yarn add --dev webpack webpack-cli"
 
 say "Add build script"
 build_script = "webpack --config webpack.config.js"
