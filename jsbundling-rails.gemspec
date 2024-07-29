@@ -13,4 +13,6 @@ Gem::Specification.new do |spec|
   spec.files += ["LICENSE", "README.md"]
 
   spec.add_dependency "railties", ">= 6.0.0"
+
+  spec.metadata["changelog_uri"] = spec.homepage + "/releases"
 end
