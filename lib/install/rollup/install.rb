@@ -3,7 +3,7 @@ apply "#{__dir__}/../install_procfile.rb"
 
 say "Install rollup with config"
 copy_file "#{__dir__}/rollup.config.js", "rollup.config.js"
-run "yarn add rollup @rollup/plugin-node-resolve"
+run "yarn add --dev rollup @rollup/plugin-node-resolve"
 
 say "Add build script"
 build_script = "rollup -c --bundleConfigAsCjs rollup.config.js"
