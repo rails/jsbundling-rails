@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.license     = "MIT"
 
   spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
-  spec.files += ["LICENSE", "README.md"]
+  spec.files += ["MIT-LICENSE", "README.md"]
 
   spec.add_dependency "railties", ">= 6.0.0"
 
