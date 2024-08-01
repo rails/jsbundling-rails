@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+GEMFILES_DIR="$(dirname -- $(dirname -- "${BASH_SOURCE}"))/gemfiles"
+
+for gemfile in "$GEMFILES_DIR"/*.gemfile; do
+  (set -x; BUNDLE_GEMFILE="$gemfile" bundle exec rake test)
+  echo
+done
