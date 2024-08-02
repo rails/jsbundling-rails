@@ -43,7 +43,7 @@ module Jsbundling
     end
 
     def tool_exists?(tool)
-      system "command -v #{tool} > /dev/null"
+      system "which #{tool} > /dev/null"
     end
 
     def tool
