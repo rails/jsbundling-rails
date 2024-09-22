@@ -2,6 +2,8 @@ module Jsbundling
   module Tasks
     extend self
 
+    attr_writer :build_command
+
     def install_command
       case tool
       when :bun then "bun install"
@@ -13,6 +15,10 @@ module Jsbundling
     end
 
     def build_command
+      if @build_command
+        return @build_command
+      end
+
       case tool
       when :bun then "bun run build"
       when :yarn then "yarn build"
