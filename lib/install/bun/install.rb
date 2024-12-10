@@ -28,3 +28,8 @@ else
   copy_file "#{__dir__}/.gitattributes", ".gitattributes"
 end
 say %(Run `git config diff.lockb.textconv bun && git config diff.lockb.binary true` to enable pretty diffs for Bun's .lockb file), :green
+
+if (puma_config_path = Rails.root.join("config/puma.rb")).exist?
+  say %(Adding plugin to puma.rb)
+  insert_into_file puma_config_path, %|\nplugin :bun if ENV.fetch("RAILS_ENV", "development") == "development"|, after:  "plugin :tmp_restart"
+end
