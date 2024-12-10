@@ -39,6 +39,19 @@ Or, in Rails 7+, you can preconfigure your new application to use a specific bun
 
 ## FAQ
 
+### Puma plugin
+
+Using [Puma](https://github.com/puma/puma) in development you can now add a plugin to build and compile your javascript. Just add the following to your `puma.rb`.
+
+```
+# config/puma.rb
+plugin :yarn if ENV.fetch("RAILS_ENV", "development") == "development"
+
+# or if you're using Bun
+plugin :bun if ENV.fetch("RAILS_ENV", "development") == "development"
+
+```
+
 ### Is there a work-around for lack of glob syntax on Windows?
 
 The default build script for esbuild relies on the `app/javascript/*.*` glob pattern to compile multiple entrypoints automatically. This glob pattern is not available by default on Windows, so you need to change the build script in `package.json` to manually list the entrypoints you wish to compile.
