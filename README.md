@@ -12,7 +12,7 @@ This also happens in testing where the bundler attaches to the `test:prepare` ta
 
 That's it!
 
-You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `bun.config.js` for Bun, `rollup.config.js` for rollup.js or `webpack.config.json` for Webpack `rspack.config.json` for Rspack (esbuild does not have a default configuration format, and we don't intend to use esbuild as an API in order to hack around it).
+You can configure your bundler options in the `build` script in `package.json` or via the installer-generated `bun.config.js` for Bun, `rollup.config.js` for rollup.js. `webpack.config.json` for Webpack or `rspack.config.json` for Rspack (esbuild does not have a default configuration format, and we don't intend to use esbuild as an API in order to hack around it).
 
 If you're already using [`webpacker`](https://github.com/rails/webpacker) and you're wondering if you should migrate to `jsbundling-rails`, have a look at [the high-level comparison](./docs/comparison_with_webpacker.md). If you're looking to migrate from webpacker, see the [migration guide](https://github.com/rails/jsbundling-rails/blob/main/docs/switch_from_webpacker.md).
 
