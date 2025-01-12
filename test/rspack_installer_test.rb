@@ -17,7 +17,7 @@ class RspackInstallerTest < ActiveSupport::TestCase
 
       assert File.exist?("rspack.config.js")
 
-      assert_match %r{STUBBED yarn add.* rspack}, out
+      assert_match %r{STUBBED yarn add.* @rspack}, out
       assert_match %r{STUBBED npm (?:set-script build |pkg set scripts.build=)rspack --config rspack.config.js}, out
       assert_match "STUBBED yarn build", out
     end
