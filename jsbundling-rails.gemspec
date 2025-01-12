@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors     = [ "David Heinemeier Hansson" ]
   spec.email       = "david@loudthinking.com"
   spec.homepage    = "https://github.com/rails/jsbundling-rails"
-  spec.summary     = "Bundle and transpile JavaScript in Rails with bun, esbuild, rollup.js, or Webpack."
+  spec.summary     = "Bundle and transpile JavaScript in Rails with bun, esbuild, rollup.js, Webpack, or Rspack."
   spec.license     = "MIT"
 
   spec.files = Dir.glob("lib/**/*", File::FNM_DOTMATCH).reject { |f| File.directory?(f) }
