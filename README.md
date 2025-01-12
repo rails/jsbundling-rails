@@ -34,7 +34,7 @@ To get started run:
 ./bin/rails javascript:install:[bun|esbuild|rollup|webpack|rspack]
 ```
 
-Or, in Rails 7+, you can preconfigure your new application to use a specific bundler with `rails new myapp -j [bun|esbuild|rollup|webpack\rspack]`.
+Or, in Rails 7+, you can preconfigure your new application to use a specific bundler with `rails new myapp -j [bun|esbuild|rollup|webpack|rspack]`.
 
 
 ## FAQ
