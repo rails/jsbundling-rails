@@ -2,6 +2,8 @@
 ENV["RAILS_ENV"] = "test"
 
 require "fileutils"
+require "tmpdir"
+
 require "rails"
 require "rails/test_help"
 
@@ -20,6 +22,11 @@ module RailsAppHelpers
 
         gemfile.gsub!(/^gem ["']jsbundling-rails["'].*/, "")
         gemfile << %(gem "jsbundling-rails", path: #{File.expand_path("..", __dir__).inspect}\n)
+
+
+        if Rails::VERSION::MAJOR < 7 || (Rails::VERSION::MAJOR == 7 && Rails::VERSION::MINOR < 1)
+          gemfile << %{gem "concurrent-ruby", "<= 1.3.4"\n}
+        end
 
         if Rails::VERSION::PRE == "alpha"
           gemfile.gsub!(/^gem ["']rails["'].*/, "")
@@ -44,7 +51,7 @@ module RailsAppHelpers
           FileUtils.cp_r("#{cache_dir}/#{app_name}", tmpdir)
         else
           create_new_rails_app("#{tmpdir}/#{app_name}", *cli_options)
-          FileUtils.cp_r("#{tmpdir}/#{app_name}", cache_dir) # Cache app for future runs.
+          FileUtils.cp_r("#{tmpdir}/#{app_name}", cache_dir, remove_destination: true) # Cache app for future runs.
         end
 
         Dir.chdir("#{tmpdir}/#{app_name}", &block)
