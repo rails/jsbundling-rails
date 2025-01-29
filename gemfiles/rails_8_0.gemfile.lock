@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     jsbundling-rails (1.3.1)
       railties (>= 6.0.0)
@@ -125,7 +125,6 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.8)
     minitest (5.25.4)
     net-imap (0.5.5)
       date
@@ -136,9 +135,6 @@ GEM
       timeout
     net-smtp (0.5.0)
     nio4r (2.7.4)
-    nokogiri (1.18.2)
-      mini_portile2 (~> 2.8.2)
-      racc (~> 1.4)
     nokogiri (1.18.2-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.18.2-aarch64-linux-musl)
@@ -158,6 +154,11 @@ GEM
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
+    propshaft (1.1.0)
+      actionpack (>= 7.0.0)
+      activesupport (>= 7.0.0)
+      rack
+      railties (>= 7.0.0)
     psych (5.2.3)
       date
       stringio
@@ -218,8 +219,6 @@ GEM
     sqlite3 (2.5.0-arm-linux-gnu)
     sqlite3 (2.5.0-arm-linux-musl)
     sqlite3 (2.5.0-arm64-darwin)
-    sqlite3 (2.5.0-x86-linux-gnu)
-    sqlite3 (2.5.0-x86-linux-musl)
     sqlite3 (2.5.0-x86_64-darwin)
     sqlite3 (2.5.0-x86_64-linux-gnu)
     sqlite3 (2.5.0-x86_64-linux-musl)
@@ -246,19 +245,14 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
-    zeitwerk (2.6.18)
+    zeitwerk (2.7.1)
 
 PLATFORMS
-  aarch64-linux
   aarch64-linux-gnu
   aarch64-linux-musl
-  arm-linux
   arm-linux-gnu
   arm-linux-musl
   arm64-darwin
-  x86-linux
-  x86-linux-gnu
-  x86-linux-musl
   x86_64-darwin
   x86_64-linux-gnu
   x86_64-linux-musl
@@ -268,6 +262,7 @@ DEPENDENCIES
   byebug
   capybara
   jsbundling-rails!
+  propshaft
   rails (~> 8.0.0)
   rexml
   selenium-webdriver
@@ -277,4 +272,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   2.5.16
+   2.6.2
