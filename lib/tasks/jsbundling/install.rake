@@ -19,5 +19,10 @@ namespace :javascript do
     task :webpack do
       system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../../install/webpack/install.rb",  __dir__)}"
     end
+
+    desc "Install Rspack"
+    task :rspack do
+      system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../../install/rspack/install.rb",  __dir__)}"
+    end
   end
 end
