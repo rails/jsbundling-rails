@@ -15,7 +15,7 @@ namespace :javascript do
     end
   end
 
-  build_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"] || ENV["SKIP_BUN_INSTALL"]
+  build_task.prereqs << :install unless ENV["SKIP_JS_INSTALL"] || ENV["SKIP_YARN_INSTALL"] || ENV["SKIP_BUN_INSTALL"]
 end
 
 module Jsbundling
