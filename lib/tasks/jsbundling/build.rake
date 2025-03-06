@@ -49,6 +49,7 @@ module Jsbundling
     def tool
       case
       when File.exist?('bun.lockb') then :bun
+      when File.exist?('bun.lock') then :bun
       when File.exist?('yarn.lock') then :yarn
       when File.exist?('pnpm-lock.yaml') then :pnpm
       when File.exist?('package-lock.json') then :npm
