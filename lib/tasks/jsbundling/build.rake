@@ -42,20 +42,23 @@ module Jsbundling
       end
     end
 
-    def tool_exists?(tool)
-      system "command -v #{tool} > /dev/null"
+    def tool
+      tool_determined_by_config_file || tool_determined_by_executable
     end
 
-    def tool
+    def tool_determined_by_config_file
       case
-      when File.exist?('bun.lockb') then :bun
-      when File.exist?('yarn.lock') then :yarn
-      when File.exist?('pnpm-lock.yaml') then :pnpm
-      when File.exist?('package-lock.json') then :npm
-      when tool_exists?('bun') then :bun
-      when tool_exists?('yarn') then :yarn
-      when tool_exists?('pnpm') then :pnpm
-      when tool_exists?('npm') then :npm
+      when File.exist?("bun.lockb")         then :bun
+      when File.exist?("bun.lock")          then :bun
+      when File.exist?("yarn.lock")         then :yarn
+      when File.exist?("pnpm-lock.yaml")    then :pnpm
+      when File.exist?("package-lock.json") then :npm
+      end
+    end
+
+    def tool_determined_by_executable
+      %i[ bun yarn pnpm npm ].each do |exe|
+        return exe if system "command -v #{exe} > /dev/null"
       end
     end
   end
