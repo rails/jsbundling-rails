@@ -60,6 +60,20 @@ Suppose you have an image `app/javascript/images/example.png` that you need to r
 1. The image itself can now be referenced by its imported name, e.g. in React, `<img src={Example} />`.
 1. The path of the image resolves to `/assets/example-5SRKKTLZ.digested.png`, which is served by the asset pipeline.
 
+### What changes are needed to deploy successfully?
+
+Your build environment needs to have a JS runtime (e.g. [Node](https://nodejs.org/en)) and the `yarn` package manager (v1).
+
+If you're deploying with [Kamal](https://github.com/basecamp/kamal), and you generated a Rails 8 app with the `--js` flag, no changes should be needed. If you added `jsbundling-rails` later, you can add the following to the `build` section of your Dockerfile to install the required packages:
+
+```
+# Install things needed to build JS packages (including Node v22)
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh && \
+    bash nodesource_setup.sh
+RUN apt-get install -y nodejs
+RUN npm install --global yarn
+```
+
 ## License
 
 JavaScript Bundling for Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
