@@ -64,7 +64,7 @@ Suppose you have an image `app/javascript/images/example.png` that you need to r
 
 Your build environment needs to have a JS runtime (e.g. [Node](https://nodejs.org/en)) and the `yarn` package manager (v1).
 
-If you're deploying with [Kamal](https://github.com/basecamp/kamal), and you generated a Rails 8 app with the `--js` flag, no changes should be needed. If you added `jsbundling-rails` later, you can add the following to the `build` section of your Dockerfile to install the required packages:
+If you are building and deploying with Docker (e.g. using [Kamal](https://github.com/basecamp/kamal)), and you have added `jsbundling-rails` to your project, you should add the following to the `build` section of your Dockerfile to install the required packages. (If you generated a Rails 8 app with the `--js` flag, no changes should be needed.)
 
 ```
 # Install things needed to build JS packages (including Node v22)
