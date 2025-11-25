@@ -15,7 +15,7 @@ namespace :javascript do
     end
   end
 
-  build_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"] || ENV["SKIP_BUN_INSTALL"]
+  build_task.prereqs << :install unless ENV["SKIP_BUN_INSTALL"] || ENV["SKIP_NPM_INSTALL"] || ENV["SKIP_YARN_INSTALL"]
 end
 
 module Jsbundling
@@ -25,9 +25,9 @@ module Jsbundling
     def install_command
       case tool
       when :bun then "bun install"
-      when :yarn then "yarn install"
       when :pnpm then "pnpm install"
       when :npm then "npm install"
+      when :yarn then "yarn install"
       else raise "jsbundling-rails: No suitable tool found for installing JavaScript dependencies"
       end
     end
@@ -35,9 +35,9 @@ module Jsbundling
     def build_command
       case tool
       when :bun then "bun run build"
-      when :yarn then "yarn build"
       when :pnpm then "pnpm build"
       when :npm then "npm run build"
+      when :yarn then "yarn build"
       else raise "jsbundling-rails: No suitable tool found for building JavaScript"
       end
     end
@@ -50,14 +50,14 @@ module Jsbundling
       case
       when File.exist?("bun.lockb")         then :bun
       when File.exist?("bun.lock")          then :bun
-      when File.exist?("yarn.lock")         then :yarn
       when File.exist?("pnpm-lock.yaml")    then :pnpm
       when File.exist?("package-lock.json") then :npm
+      when File.exist?("yarn.lock")         then :yarn
       end
     end
 
     def tool_determined_by_executable
-      %i[ bun yarn pnpm npm ].each do |exe|
+      %i[ bun pnpm npm yarn ].each do |exe|
         return exe if system "command -v #{exe} > /dev/null"
       end
     end

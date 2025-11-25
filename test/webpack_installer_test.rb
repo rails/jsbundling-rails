@@ -10,22 +10,22 @@ class WebpackInstallerTest < ActiveSupport::TestCase
       out, _err = run_installer
 
       File.read("Procfile.dev").tap do |procfile|
-        assert_match "js: yarn build --watch", procfile
+        assert_match "js: npm run build -- --watch", procfile
       end
 
       assert_match "STUBBED gem install foreman", out
 
       assert File.exist?("webpack.config.js")
 
-      assert_match %r{STUBBED yarn add.* webpack}, out
+      assert_match %r{STUBBED npm install .* webpack}, out
       assert_match %r{STUBBED npm (?:set-script build |pkg set scripts.build=)webpack --config webpack.config.js}, out
-      assert_match "STUBBED yarn build", out
+      assert_match "STUBBED npm run build", out
     end
   end
 
   private
     def run_installer
-      stub_bins("gem", "yarn", "npm")
+      stub_bins("gem", "npm")
       run_command("bin/rails", "javascript:install:webpack")
     end
 end
