@@ -1,5 +1,5 @@
 if Rails.root.join("Procfile.dev").exist?
-  append_to_file "Procfile.dev", "js: yarn build --watch\n"
+  append_to_file "Procfile.dev", "js: bin/rails javascript:watch\n"
 else
   say "Add default Procfile.dev"
   copy_file "#{__dir__}/Procfile.dev", "Procfile.dev"

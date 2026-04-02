@@ -19,7 +19,7 @@ class BunInstallerTest < ActiveSupport::TestCase
 
       File.read("Procfile.dev").tap do |procfile|
         assert_match "pre: existing", procfile
-        assert_match "js: bun run build --watch", procfile
+        assert_match "js: bin/rails javascript:watch", procfile
       end
 
       JSON.load_file("package.json").tap do |package_json|
@@ -40,7 +40,7 @@ class BunInstallerTest < ActiveSupport::TestCase
       end
 
       File.read("Procfile.dev").tap do |procfile|
-        assert_match "js: bun run build --watch", procfile
+        assert_match "js: bin/rails javascript:watch", procfile
       end
 
       assert_match "STUBBED gem install foreman", out
