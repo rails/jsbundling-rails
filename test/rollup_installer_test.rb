@@ -10,7 +10,7 @@ class RollupInstallerTest < ActiveSupport::TestCase
       out, _err = run_installer
 
       File.read("Procfile.dev").tap do |procfile|
-        assert_match "js: yarn build --watch", procfile
+        assert_match "js: bin/rails javascript:watch", procfile
       end
 
       assert_match "STUBBED gem install foreman", out
