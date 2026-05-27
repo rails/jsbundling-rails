@@ -15,6 +15,11 @@ namespace :javascript do
       system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../../install/rollup/install.rb",  __dir__)}"
     end
 
+    desc "Install rolldown"
+    task :rolldown do
+      system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../../install/rolldown/install.rb",  __dir__)}"
+    end
+
     desc "Install Webpack"
     task :webpack do
       system "#{RbConfig.ruby} ./bin/rails app:template LOCATION=#{File.expand_path("../../install/webpack/install.rb",  __dir__)}"
