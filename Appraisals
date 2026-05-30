@@ -34,6 +34,11 @@ if RUBY_MAJOR_VERSION >= 3 && RUBY_MINOR_VERSION > 1
     gem "propshaft"
   end
 
+  appraise "rails_8_1" do
+    gem "rails", "~> 8.1.0"
+    gem "propshaft"
+  end
+
   appraise "rails_main" do
     gem "rails", github: "rails/rails", branch: "main"
     gem "propshaft"
