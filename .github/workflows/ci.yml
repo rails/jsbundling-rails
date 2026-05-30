@@ -32,6 +32,8 @@ jobs:
             gemfile: gemfiles/rails_8_1.gemfile
           - ruby-version: "3.1"
             gemfile: gemfiles/rails_main.gemfile
+          - ruby-version: "3.2"
+            gemfile: gemfiles/rails_main.gemfile
 
     name: ${{ format('Tests (Ruby {0}, {1})', matrix.ruby-version, matrix.gemfile) }}
     runs-on: ubuntu-latest
