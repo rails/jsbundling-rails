@@ -16,6 +16,15 @@ namespace :javascript do
   end
 
   build_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"] || ENV["SKIP_BUN_INSTALL"]
+
+  desc "Build and watch your JavaScript bundle"
+  watch_task = task :watch do
+    unless system(Jsbundling::PackageManager.build_command(with_watch: true))
+      raise "jsbundling-rails: Command watch failed, ensure `#{Jsbundling::PackageManager.build_command(with_watch: true)}` runs without errors"
+    end
+  end
+
+  watch_task.prereqs << :install unless ENV["SKIP_YARN_INSTALL"] || ENV["SKIP_BUN_INSTALL"]
 end
 
 unless ENV["SKIP_JS_BUILD"]
