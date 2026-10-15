@@ -11,6 +11,12 @@ module Jsbundling
         install: "bun install",
         build: "bun run build"
       },
+      aube: {
+        add: "aube add %s",
+        add_dev: "aube add -D %s",
+        install: "aube ci",
+        build: "aube run build"
+      },
       pnpm: {
         add: "pnpm add %s",
         add_dev: "pnpm add -D %s",
@@ -34,6 +40,8 @@ module Jsbundling
     def self.detect(root)
       if root.join("bun.lock").exist? || root.join("bun.lockb").exist? || root.join("bun.config.js").exist?
         :bun
+      elsif root.join("aube-lock.yaml").exist?
+        :aube
       elsif root.join("pnpm-lock.yaml").exist?
         :pnpm
       elsif root.join("package-lock.json").exist?
@@ -44,7 +52,7 @@ module Jsbundling
     end
 
     def detect_by_executable
-      %i[ bun yarn pnpm npm ].each do |exe|
+      %i[ bun yarn pnpm npm aube ].each do |exe|
         return exe if system "command -v #{exe} > /dev/null"
       end
 

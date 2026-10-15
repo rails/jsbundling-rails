@@ -86,9 +86,21 @@ class WebpackInstallerTest < ActiveSupport::TestCase
     end
   end
 
+  test "webpack installer with aube when aube-lock.yaml exists" do
+    with_new_rails_app do
+      File.write("aube-lock.yaml", "\n")
+
+      out, _err = run_installer
+
+      assert_match "js: aube run build --watch", File.read("Procfile.dev")
+      assert_match "STUBBED aube add -D webpack", out
+      assert_match "STUBBED aube run build", out
+    end
+  end
+
   private
     def run_installer
-      stub_bins("gem", "yarn", "npm", "pnpm")
+      stub_bins("gem", "yarn", "npm", "pnpm", "aube")
       run_command("bin/rails", "javascript:install:webpack")
     end
 end
